@@ -112,7 +112,7 @@ impl SignatureError {
         }
     }
 
-    fn http_status(&self) -> http::status::StatusCode {
+    fn http_status(&self) -> ::http::status::StatusCode {
         match self {
             Self::IncompleteSignature(_)
             | Self::InvalidBodyEncoding(_)
@@ -131,7 +131,7 @@ impl ServiceError for SignatureError {
         SignatureError::error_code(self)
     }
 
-    fn http_status(&self) -> http::status::StatusCode {
+    fn http_status(&self) -> ::http::status::StatusCode {
         SignatureError::http_status(self)
     }
 }

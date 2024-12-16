@@ -1,5 +1,4 @@
 use {
-    http::status::StatusCode,
     scratchstack_errors::ServiceError,
     std::{
         error::Error,
@@ -120,9 +119,9 @@ impl SignatureError {
             | Self::InvalidRequestMethod(_)
             | Self::InvalidURIPath(_)
             | Self::MalformedQueryString(_)
-            | Self::MissingAuthenticationToken(_) => StatusCode::BAD_REQUEST,
-            Self::IO(_) | Self::InternalServiceError(_) => StatusCode::INTERNAL_SERVER_ERROR,
-            _ => StatusCode::FORBIDDEN,
+            | Self::MissingAuthenticationToken(_) => http::status::StatusCode::BAD_REQUEST,
+            Self::IO(_) | Self::InternalServiceError(_) => http::status::StatusCode::INTERNAL_SERVER_ERROR,
+            _ => http::status::StatusCode::FORBIDDEN,
         }
     }
 }

@@ -119,9 +119,9 @@ impl SignatureError {
             | Self::InvalidRequestMethod(_)
             | Self::InvalidURIPath(_)
             | Self::MalformedQueryString(_)
-            | Self::MissingAuthenticationToken(_) => http::status::StatusCode::BAD_REQUEST,
-            Self::IO(_) | Self::InternalServiceError(_) => http::status::StatusCode::INTERNAL_SERVER_ERROR,
-            _ => http::status::StatusCode::FORBIDDEN,
+            | Self::MissingAuthenticationToken(_) => ::http::status::StatusCode::BAD_REQUEST,
+            Self::IO(_) | Self::InternalServiceError(_) => ::http::status::StatusCode::INTERNAL_SERVER_ERROR,
+            _ => ::http::status::StatusCode::FORBIDDEN,
         }
     }
 }
